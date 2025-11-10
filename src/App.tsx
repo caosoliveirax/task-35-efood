@@ -1,14 +1,15 @@
 import Header from '@components/Header'
 import { GlobalStyle } from './global'
-import RestaurantsList from '@components/RestaurantsList'
+import { BrowserRouter } from 'react-router-dom'
+import Routers from './routers'
 
 function App() {
   return (
-    <>
+    <BrowserRouter>
       <GlobalStyle />
       <Header />
-      <RestaurantsList />
-    </>
+      <Routers />
+    </BrowserRouter>
   )
 }
 

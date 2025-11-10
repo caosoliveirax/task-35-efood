@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { colors } from '../../global'
 import styled from 'styled-components'
 
@@ -10,9 +11,17 @@ export const Image = styled.img`
   display: block;
 `
 
+export const Infos = styled.div`
+  position: absolute;
+  top: 16px;
+  right: 16px;
+`
+
 export const Wrapper = styled.div`
   position: relative;
   background-color: ${colors.white};
+  border: 1px solid ${colors.primary};
+  border-top: none;
   padding: 8px;
 `
 
@@ -28,7 +37,8 @@ export const Description = styled.p`
   line-height: 22px;
 `
 
-export const ButtonLink = styled.button`
+export const ButtonLink = styled(Link)`
+  display: inline-block;
   color: ${colors.beige};
   background-color: ${colors.primary};
   border: none;
@@ -37,4 +47,5 @@ export const ButtonLink = styled.button`
   text-align: center;
   padding: 4px 6px;
   cursor: pointer;
+  text-decoration: none;
 `
