@@ -7,7 +7,7 @@ import Logo from '@components/Logo'
 
 const Footer = () => (
   <Container>
-    <div className="container-fh">
+    <div className="container container-fh">
       <Logo />
       <ListLinks>
         <li>
@@ -29,7 +29,7 @@ const Footer = () => (
       <FooterDescription>
         A efood é uma plataforma para divulgação de estabelecimentos, a
         responsabilidade pela entrega, qualidade dos produtos é toda do
-        estabelecimento contratado.{' '}
+        estabelecimento contratado.
       </FooterDescription>
     </div>
   </Container>
