@@ -1,59 +1,20 @@
+import { useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
-import pizza from '../../assets/images/pizza.png'
 
 import ProductsList from '@components/ProductsList'
 import Header from '@components/Header'
-
-import { restaurants } from '../Home'
-import Products from '../../models/Product'
-
-const menu: Products[] = [
-  {
-    id: 1,
-    name: 'Pizza Marguerita',
-    description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-    image: pizza
-  },
-  {
-    id: 2,
-    name: 'Pizza Marguerita',
-    description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-    image: pizza
-  },
-  {
-    id: 3,
-    name: 'Pizza Marguerita',
-    description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-    image: pizza
-  },
-  {
-    id: 4,
-    name: 'Pizza Marguerita',
-    description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-    image: pizza
-  },
-  {
-    id: 5,
-    name: 'Pizza Marguerita',
-    description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-    image: pizza
-  },
-  {
-    id: 6,
-    name: 'Pizza Marguerita',
-    description:
-      'A clássica Marguerita: molho de tomate suculento, mussarela derretida, manjericão fresco e um toque de azeite. Sabor e simplicidade!',
-    image: pizza
-  }
-]
+import type { Restaurant } from '../../pages/Home'
 
 const Menu = () => {
   const { id } = useParams()
+
+  const [restaurants, setRestaurants] = useState<Restaurant[]>([])
+
+  useEffect(() => {
+    fetch('https://api-ebac.vercel.app/api/efood/restaurantes')
+      .then((res) => res.json())
+      .then((res) => setRestaurants(res))
+  }, [])
 
   const restaurant = restaurants.find((r) => r.id === Number(id))
 
@@ -70,10 +31,10 @@ const Menu = () => {
     <>
       <Header size="small" />
       <ProductsList
-        banner={restaurant.banner}
-        category={restaurant.category}
-        title={restaurant.name}
-        products={menu}
+        banner={restaurant?.capa}
+        category={restaurant?.tipo}
+        title={restaurant.titulo}
+        menu={restaurant.cardapio}
       />
     </>
   )

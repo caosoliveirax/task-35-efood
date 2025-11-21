@@ -6,35 +6,33 @@ import Button from '@components/Button'
 
 type Props = {
   id: number
-  name: string
-  category: string
-  rating: string
-  description: string
-  infos: string[]
-  image: string
+  titulo: string
+  destacado: boolean
+  tipo: string
+  avaliacao: string
+  descricao: string
+  capa: string
 }
 
 const Restaurant = ({
   id,
-  name,
-  category,
-  image,
-  description,
-  infos,
-  rating
+  titulo,
+  destacado,
+  tipo,
+  avaliacao,
+  descricao,
+  capa
 }: Props) => (
   <CardContainer>
-    <Image src={image} alt={name} />
+    <Image src={capa} alt={titulo} />
     <Infos>
-      {infos.map((info) => (
-        <Tag key={info}>{info}</Tag>
-      ))}
-      <Tag>{category}</Tag>
+      {destacado === true && <Tag>Destaque da semana</Tag>}
+      <Tag>{tipo}</Tag>
     </Infos>
     <Wrapper>
-      <Title>{name}</Title>
-      <Rating>{rating}</Rating>
-      <Description>{description}</Description>
+      <Title>{titulo}</Title>
+      <Rating>{avaliacao}</Rating>
+      <Description>{descricao}</Description>
       <Button type="link" to={`/menu/${id}`}>
         Saiba mais
       </Button>

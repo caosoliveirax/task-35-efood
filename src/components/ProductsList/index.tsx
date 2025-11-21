@@ -1,15 +1,15 @@
 import ProductItem from '@components/Product'
 import { BannerRestaurant, Category, List, Title } from './styles'
-import Product from '../../models/Product'
+import type { Restaurant } from 'pages/Home'
 
 export type Props = {
   banner: string
   category: string
   title: string
-  products: Product[]
+  menu: Restaurant['cardapio']
 }
 
-const ProductsList = ({ products, banner, category, title }: Props) => (
+const ProductsList = ({ menu, banner, category, title }: Props) => (
   <>
     <BannerRestaurant style={{ backgroundImage: `url(${banner})` }}>
       <div className="container">
@@ -19,12 +19,15 @@ const ProductsList = ({ products, banner, category, title }: Props) => (
     </BannerRestaurant>
     <div className="container">
       <List>
-        {products.map((product) => (
-          <li key={product.id}>
+        {menu.map((prato) => (
+          <li key={prato.id}>
             <ProductItem
-              name={product.name}
-              description={product.description}
-              image={product.image}
+              id={prato.id}
+              descricao={prato.descricao}
+              preco={prato.preco}
+              porcao={prato.porcao}
+              nome={prato.nome}
+              foto={prato.foto}
             />
           </li>
         ))}
