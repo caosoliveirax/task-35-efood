@@ -1,8 +1,9 @@
+import type { ReactNode } from 'react'
 import { ButtonContainer, ButtonLink } from './styles'
 
 type Props = {
   type: 'button' | 'link'
-  children: string
+  children: ReactNode
   to?: string
   onClick?: () => void
 }

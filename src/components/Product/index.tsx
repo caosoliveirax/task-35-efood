@@ -9,9 +9,10 @@ type Props = {
   foto: string
   descricao: string
   porcao: string
+  aoClicar: () => void
 }
 
-const Products = ({ nome, foto, descricao }: Props) => {
+const Products = ({ nome, foto, descricao, aoClicar }: Props) => {
   const getDescription = (descricao: string) => {
     if (descricao.length > 164) {
       return descricao.slice(0, 161) + '...'
@@ -25,7 +26,9 @@ const Products = ({ nome, foto, descricao }: Props) => {
       <Wrapper>
         <Title>{nome}</Title>
         <Description>{getDescription(descricao)}</Description>
-        <Button type="button">Adicionar ao carrinho</Button>
+        <Button onClick={aoClicar} type="button">
+          Mais detalhes
+        </Button>
       </Wrapper>
     </CardContainer>
   )
